@@ -10,7 +10,7 @@ function createProduct(id, name, price, stock) {
             if (this.stock >= quantity) {
                 this.stock -= quantity;
             } else {
-                console.log(`❌ Not enough stock for ${this.name}`);
+                console.log(` Not enough stock for ${this.name}`);
             }
         }
     };
@@ -29,9 +29,9 @@ const products = [
         if (index !== -1) {
             const removed = this.items.splice(index, 1)[0];
             removed.product.stock += removed.quantity; // Restock on remove
-            console.log(`🗑️ Removed ${removed.product.name} from cart.`);
+            console.log(` Removed ${removed.product.name} from cart.`);
         } else {
-            console.log("❌ Item not found in cart.");
+            console.log(" Item not found in cart.");
         }
     },
 
@@ -43,15 +43,15 @@ const products = [
     // Print cart summary
     printSummary: function () {
         if (this.items.length === 0) {
-            console.log("🛒 Your cart is empty.");
+            console.log("Your cart is empty.");
             return;
         }
 
-        console.log("🛍️ Cart Summary:");
+        console.log(" Cart Summary:");
         this.items.forEach(item => {
             console.log(`- ${item.product.name} x${item.quantity} = R${item.product.price * item.quantity}`);
         });
-        console.log(`💵 Total: R${this.getTotal()}`);
+        console.log(` Total: R${this.getTotal()}`);
     }
 };
 
@@ -70,12 +70,12 @@ const cart = {
         const product = products.find(p => p.id === productId);
 
         if (!product) {
-            console.log("❌ Product not found.");
+            console.log(" Product not found.");
             return;
         }
 
         if (product.stock < quantity) {
-            console.log(`❌ Only ${product.stock} left in stock for ${product.name}.`);
+            console.log(`Only ${product.stock} left in stock for ${product.name}.`);
             return;
         }
 
