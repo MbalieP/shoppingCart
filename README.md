@@ -15,7 +15,7 @@ The application uses a constructor function to create products and an object to 
 
 ### Product Constructor Function
 
-```javascript
+```javascript file
 function createProduct(id, name, price, stock) {
     return {
         id,
