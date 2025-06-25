@@ -119,3 +119,30 @@ const cart = {
         product.updateStock(quantity);
         console.log(`✅ Added ${quantity} x ${product.name} to cart.`);
     },
+    
+    // Calculate total cost
+    getTotal: function () {
+        return this.items.reduce((total, item) => total + (item.product.price * item.quantity), 0);
+    },
+
+    // Print cart summary
+    printSummary: function () {
+        if (this.items.length === 0) {
+            console.log("🛒 Your cart is empty.");
+            return;
+        }
+
+        console.log("🛍️ Cart Summary:");
+        this.items.forEach(item => {
+            console.log(`- ${item.product.name} x${item.quantity} = R${item.product.price * item.quantity}`);
+        });
+        console.log(`💵 Total: R${this.getTotal()}`);
+    }
+};
+
+// Usage Examples
+cart.addItem(1, 1); // Add 1 Laptop
+cart.addItem(2, 2); // Add 2 Headphones
+cart.printSummary(); // Print the cart summary
+cart.removeItem(2); // Remove Headphones
+cart.printSummary(); // Print updated summary
